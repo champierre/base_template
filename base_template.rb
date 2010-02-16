@@ -12,6 +12,7 @@ if yes?("Do you want to use formtastic?")
   gem "formtastic"
   rake "gems:install"
   rake "gems:unpack"
+  generate "formtastic"
 end
 
 if yes?("Do you want to use thoughtbot-clearance?")
