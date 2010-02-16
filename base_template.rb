@@ -4,8 +4,14 @@ if yes?("Do you want to use RSpec?")
   plugin "rspec", :git => "git:"
 end
 
-if yes?("Do you want to use formtastic?")
+if yes?("Do you want to use jrails?")
   plugin "jrails", :git => "git://github.com/aaronchi/jrails.git"
+end
+
+if yes?("Do you want to use formtastic?")
+  gem "formtastic"
+  rake "gems:install"
+  rake "gems:unpack"
 end
 
 if yes?("Do you want to use thoughtbot-clearance?")
@@ -15,7 +21,16 @@ if yes?("Do you want to use thoughtbot-clearance?")
     :version => '>= 0.8.2'
   rake "gems:install"
   rake "gems:unpack"
+  generate "clearance"
+  generate "clearance_views"
 end
+
+if yes?("Do you want to generate nifty_layout?")
+  generate "nifty_layout"
+end
+
+generate :controller, "top", "index"
+route "map.root :controller => :top"
 
 git :init
 file ".gitignore", <<-END
@@ -35,4 +50,5 @@ run "touch tmp/.gitignore log/.gitignore vendor/.gitignore"
 run "cp config/database.yml config/example_database.yml"
 run "rm public/index.html"
 
-git :add => ".", :commit => "-m 'initial commit'"
+git :add => "."
+git :commit => "-m 'initial commit'"
