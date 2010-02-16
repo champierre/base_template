@@ -57,7 +57,7 @@ file "app/views/layouts/application.html.erb",
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title><%= h(yield(:title) || "Untitled") %></title>
-    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'application', 'formtastic', 'formtastic_changes' %>
     <%= yield(:head) %>
   </head>
   <body>
