@@ -42,6 +42,7 @@ APP_CONFIG = YAML.load(raw_config)["default"].symbolize_keys.merge(YAML.load(raw
 
 file "config/app_config.yml",
 %q{default:
+  domain:
 
 development:
   domain: localhost:3000
