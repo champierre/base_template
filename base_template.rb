@@ -31,6 +31,29 @@ if yes?("Do you want to generate nifty_layout?")
   generate "nifty_layout"
 end
 
+if yes?("Do you want to generate nifty_config?")
+  generate "nifty_config"
+end
+
+file "config/initializers/load_app_config.rb",
+%q{raw_config = File.read(RAILS_ROOT + "/config/app_config.yml")
+APP_CONFIG = YAML.load(raw_config)["default"].symbolize_keys.merge(YAML.load(raw_config)[RAILS_ENV].symbolize_keys)
+}
+
+file "config/app_config.yml",
+%q{default:
+  domain:
+
+development:
+  domain: localhost:3000
+
+test:
+  domain: test.host
+
+production:
+  domain: example.com  
+}
+
 generate :controller, "top", "index"
 route "map.root :controller => :top"
 
