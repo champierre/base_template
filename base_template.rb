@@ -34,12 +34,18 @@ end
 generate :controller, "top", "index"
 route "map.root :controller => :top"
 
+file ".gems", <<-END
+rails -v 2.3.8
+pg
+END
+
 file ".gitignore", <<-END
 .DS_Store
 *.swp
 log/*.log
 log/*.pid
 tmp/**/*
+tmp/*
 config/database.yml
 db/*.sqlite3
 config/environments/development.rb
