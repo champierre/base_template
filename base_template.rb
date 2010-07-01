@@ -71,7 +71,6 @@ tmp/**/*
 tmp/*
 config/database.yml
 db/*.sqlite3
-config/environments/development.rb
 *.tmproj
 coverage
 END
